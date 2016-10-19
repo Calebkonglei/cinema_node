@@ -2,21 +2,60 @@
 <head>
 	<title>杭州影院分布</title>
 	<style type="text/css">
+	    .title{
+	    	width: 100%;
+	    	text-align: center;
+	    }
 		.container{
+			width: 90%;
 			padding:20px;
+			display: flex;
+			flex-direction:row;
+			overflow: hidden;
 		}
 		.color_li{
-			color:red;
+			padding:10px;
+			color:#2FBA86;
+			list-style-type: none;
 		}
+		.cinema_name, .cinema_address{
+		  	white-space: nowrap;
+		    text-overflow: ellipsis;
+		}
+
+		.cinema_name{
+			width:30%;
+			height:50px;
+			cursor: pointer;
+		}
+		.cinema_name .color_li:hover{
+			text-decoration: underline;
+			color: #02A0EA;
+		}
+		.cinema_address{
+			width:60%;
+		}
+		
 	</style>
 </head>
 <body>
-	<div class='container'>
-		<h3>杭州电影院一览</h3>
-		<% cinemas.forEach( function (cinema){%>
-		  <li class='color_li'><%= cinema %></li>
-		<% }) %>
-
+<h3 class='title'>杭州电影院一览</h3>
+  <div class='container'>
+	<div class="cinema_name"><h4>影院名</h4>
+	  <% cinemas.forEach( function (cinema){%>
+		<li class='color_li'><%= cinema.cinema_name %></li>
+	  <% }) %>
 	</div>
+	<div class="cinema_address"><h4>地址</h4>
+	  <% cinemas.forEach( function (cinema){%>
+		<li class='color_li'><%= cinema.cinema_address %></li>
+	  <% }) %>
+	</div>
+	<div class="cinema_appraise"><h4>评分</h4>
+	  <% cinemas.forEach( function (cinema){%>
+		<li class='color_li'><%= cinema.cinema_appraise %></li>
+	  <% }) %>
+	</div>
+  </div>
 </body>
 </html>

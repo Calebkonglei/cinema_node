@@ -1,0 +1,9 @@
+.container{
+	padding:20px;
+	display: flex;
+	flex-direction:row;
+}
+.color_li{
+	padding:10px;
+	list-style-type: none;
+}
