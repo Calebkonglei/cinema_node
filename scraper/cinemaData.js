@@ -1,8 +1,30 @@
 var scraper = require('scraperjs');
-exports.cinemaList=function(res){
+var Cinema = require('../models/cinema');
+
+exports.cinemaList = function() {
+    getCinema((cinemas) =>{
+        cinemas.forEach((cinema) =>{
+            Cinema.findOneAndUpdate({
+                name:cinema.cinema_name
+            }, {
+                $set: {
+                    name: cinema.cinema_name,
+                    address: cinema.cinema_address,
+                    appraise: cinema.cinema_appraise
+                }
+            }, {
+                new: true,
+                upsert: true
+            }, (err, cinema) =>{
+                console.log(cinema);
+            })
+        })
+    })
+}
+
+function getCinema(cb){
   scraper.StaticScraper.create('https://dianying.taobao.com/ajaxCinemaList.htm?page=1&cinemaName=&pageSize=100')
     .scrape(function($) {
-        var cinemaMsg = [];
         return $("li").map(function() {
             return {
                 cinema_name:$(this).find('.detail-middle .middle-hd h4 a').text().trim(),
@@ -15,7 +37,6 @@ exports.cinemaList=function(res){
         var cinemas = cinemas.filter((item) =>{
                         return parseFloat(item.cinema_appraise) >= 8.0;
                     })
-        console.log(cinemas);
-        res.render('cinema',{cinemas:cinemas})
+        cb(cinemas);
     })
 };

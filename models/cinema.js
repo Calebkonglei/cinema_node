@@ -7,4 +7,4 @@ var CinemaSchema = new Schema({
   appraise: String
 });
 
-module.exports = mongoose.model('cinema', CinemaSchema);
+module.exports = mongoose.model('Cinema', CinemaSchema);

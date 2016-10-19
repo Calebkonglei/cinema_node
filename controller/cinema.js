@@ -1,12 +1,8 @@
-var scraper = require('scraperjs');
-var cinemaList = require('../scraper/cinemaData');
+var Cinema = require('../models/cinema');
 exports.list=function(req, res){
-  cinemaList.find().exec((err, cinemas) =>{
-    res.render({
-      'cinema',{
-        cinemaName: cinemaList
-      }
-    })
+  Cinema.find((err, cinemas) =>{
+    console.log(cinemas)
+    res.render('cinema',{cinemas:cinemas})  
   })
 } 
 
