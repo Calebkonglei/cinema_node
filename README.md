@@ -1,0 +1,2 @@
+# cinema_node
+scraperjs和cheerio结合抓取部分电影网站数据，mongodb存储数据，node端
