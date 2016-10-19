@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>杭州影院分布</title>
+	<style type="text/css">
+		.container{
+			padding:20px;
+		}
+		.color_li{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+		<h3>杭州电影院一览</h3>
+		<% cinemas.forEach( function (cinema){%>
+		  <li class='color_li'><%= cinema %></li>
+		<% }) %>
+
+	</div>
+</body>
+</html>
