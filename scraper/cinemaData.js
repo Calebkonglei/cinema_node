@@ -1,5 +1,5 @@
 var scraper = require('scraperjs');
-exports.cinemaList=function(req, res){
+exports.cinemaList=function(res){
   scraper.StaticScraper.create('https://dianying.taobao.com/ajaxCinemaList.htm?page=1&cinemaName=&pageSize=100')
     .scrape(function($) {
         return $("li").map(function() {
@@ -8,7 +8,6 @@ exports.cinemaList=function(req, res){
     })
     .then(function(cinemas) {
         console.log('cinemas');
-        // res.send(cinemas)
         res.render('cinema',{cinemas:cinemas})
     })
 };
