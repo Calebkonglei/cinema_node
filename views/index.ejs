@@ -1,25 +1,9 @@
-<html>
-<head>
-	<title>电影吧</title>
-	<style type="text/css">
-	    header{
-	    	padding:20px;
-	    }
-	    .nav li{
-	    	list-style-type: none;
-	    	padding:10px;
-	    	color:#02B9CB;
-	    	font-size: 15px;
-	    	cursor: pointer;
-	    }
-	</style>
-</head>
-<body>
-<header>
-	<ul class="nav">
-		<li><%= data[0] %></li>
-		<li><%= data[1] %></li>
-	</ul>
-</header>
-</body>
-</html>
+<%- include headerLayout %>
+ <% movies.forEach(function(movie){ %>
+ 	<div>
+ 		<img src=<%= movie.movie_image %>>
+	 	<h4><a href=""><%= movie.movie_name %></a></h4>
+	 	<p><%= movie.movie_praise %>分</p>
+	</div> 		
+ <% }) %>	
+<%- include footerLayout %>

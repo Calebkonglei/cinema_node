@@ -16,7 +16,7 @@ exports.cinemaList = function() {
                 new: true,
                 upsert: true
             }, (err, cinema) =>{
-                console.log(cinema);
+                // console.log(cinema);
             })
         })
     })

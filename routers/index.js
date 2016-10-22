@@ -1,10 +1,13 @@
 var cinema = require('../controller/cinema').list;
+// var movie = require('../controller/movie').movieList;
+var movie = require('../scraper/movieData').getMovieFromTaobao;
 module.exports = function (app){
-  app.get('/', (req, res, next) =>{
-    res.render('index',{
-      data:['首页','影院分布']
-    })
+  app.get('/', (req,res)=>{
+    movie(req,res);
   });
+  app.get('/detail/:id', (req, res) =>{
+    res.render('detail', {title:'细节'})
+  })
   app.get('/cinema', (req, res) =>{
     cinema(req, res)
   })
